@@ -1,2 +1,2 @@
-# Task-Manager
-Менеджер заданий, простое приложение на питоне
+# development-of-software-modules
+mau dzedun
