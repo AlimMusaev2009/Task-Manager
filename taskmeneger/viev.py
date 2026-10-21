@@ -1,39 +1,43 @@
 '''
-
     =====================================================
-
         Модуль показа информации в консоль
-
     =====================================================
-
 '''
 
-
-"""выводит список в консоль"""
-
-
 def show_collection(task_list):
+    """Выводит список задач в консоль."""
     print("=" * 30)
-    tasks_for_view = []
-    for number, task in enumerate(task_list):
-        parts = task.split(" | ")  # Лучше разделять с пробелами
-        if len(parts) >= 1:
-            print(number + 1, parts[0])
-            tasks_for_view.append(parts[1] if len(parts) > 1 else "Нет описания")
+    if not task_list:
+        print("Список задач пуст.")
+        print("=" * 30)
+        return
 
-    selected_task = input("Выберите номер задачи для отображения описания или просто нажмите ENTER: ")
+    # Выводим список
+    for number, task in enumerate(task_list):
+        # Предполагаем, что формат "Имя|Описание"
+        parts = task.split("|")
+        name = parts[0]
+        print(f"{number + 1}. {name}")
+    
+    print("=" * 30)
+    
+    selected_task = input("Выберите номер задачи для отображения описания или просто нажмите ENTER: ").strip()
+    
     if selected_task.isdigit():
         idx = int(selected_task) - 1
-        if 0 <= idx < len(tasks_for_view):
+        if 0 <= idx < len(task_list):
+            parts = task_list[idx].split("|")
+            description = parts[1] if len(parts) > 1 else "Описание отсутствует"
             print("~" * 30)
-            print(tasks_for_view[idx])
+            print(f"Задача: {parts[0]}")
+            print(f"Описание: {description}")
             print("~" * 30)
+        else:
+            print("Неверный номер задачи.")
     print("=" * 30)
 
-"""показывает список и ждёт завершение"""
-
-
 def show_message(message=None, mess_action=None):
+    """Показывает сообщение и ждет нажатия клавиши."""
     if message is not None:
-        print(f"задача {message} успешно {mess_action}")
-    input("нажмите любую кнопу для продолжени")
+        print(f"Задача {message} успешно {mess_action}")
+    input("нажмите Enter для продолжения...")
