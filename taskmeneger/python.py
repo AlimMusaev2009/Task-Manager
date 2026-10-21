@@ -34,7 +34,7 @@ def main():
                 deleated_task(collection)
                 save_collection(collection, name_file)
             case "5":  # завершение цикла
-                is_running = check_confirm('отключение...')
+                is_running = not check_confirm('отключение...')
             case _:  # неверная команда
                 print('неверная команда')
                 show_message()
