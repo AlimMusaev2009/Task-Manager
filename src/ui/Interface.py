@@ -1,5 +1,5 @@
 import tkinter as tk
-from .components.AppButton import AppButton
+from .componets.AppButton import AppButton
 
 
 "основной отрисовщик"
