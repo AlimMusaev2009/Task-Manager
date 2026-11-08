@@ -4,11 +4,10 @@
     =====================================================
 '''
 
-from ui.Interface import interface
-from storage import save_collection, load_collection, save_collection
+from src.ui.Interface import Interface
 
-collection = load_collection([])
-ui = interface(collection)
-ui.show_menu()
 
-ui.root.mainloop()
+def start_app():
+    app = Interface()
+    app.show_menu()
+    app.root.mainloop()
